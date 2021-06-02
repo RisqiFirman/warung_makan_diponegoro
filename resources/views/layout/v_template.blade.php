@@ -14,15 +14,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset(('css/bootstrap.min.css'))}}">
     <!-- owl css -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{asset(('css/owl.carousel.min.css'))}}">
     <!-- style css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{asset(('css/style.css'))}}">
     <!-- responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{asset(('css/responsive.css'))}}">
     <!-- awesome fontfamily -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -41,13 +42,20 @@
                     <div class="full">
                         <div class="right_header_info">
                             <ul>
-                                <li class="dinone"><img style="margin-right: 15px;" src="../images/mail_icon.png"
-                                        alt="#"><a href="#">wardipo@gmail.com</a></li>
+                                <li class="dinone"><img style="margin-right: 15px;"><a href="#">wardipo@gmail.com</a></li>
                                 <li class="dinone"><img
                                         style="margin-right: 15px;height: 21px;position: relative;top: -2px;"
                                         src="../images/location_icon.png" alt="#"><a href="#">Jl. Diponegoro Np.676 Bojonegoro. Jatim</a></li>
                                 <li class="dinone"><img style="margin-right: 15px;" src="../images/mail_icon.png"
                                             alt="#"><a href="#">0878-4564-6789</a></li>
+                                <?php
+                                $pesanan_utama =\App\Models\Pesanan::where('user_id', Auth::user()->id)->where ('status',0)->first();
+                                ?>
+
+                               <li class="dinone">
+                                        <a class="nav-link" style="margin-right: 15px;" href="{{url('check-out')}}"><i class="fa fa-shopping-cart fa-2x" style="color: white" >
+                                        </i></a>
+                                </li>
                                <li class="dinone"><img style="margin-right: 15px;"><a href="{{ route('logout') }}" class="btn btn-danger">Logout</a></li>
                             </ul>
                         </div>
@@ -57,8 +65,7 @@
         </div>
     </header>
     <!-- end header -->
-
-
+    @include('sweet::alert')
 @yield('content')
 
 
@@ -67,7 +74,7 @@
                 <div class="row">
                     <div class="col-md">
                         <div class="footer_logo">
-                            <a href="index.html"><img src="images/logowar3.png" style="width: 30%" alt="logo" /></a>
+                            <a href="index.html"><img src="{{asset(('images/logowar3.png'))}}" style="width: 20%" alt="logo" /></a>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -81,12 +88,6 @@
                     </div>
                 </div>
             </div>
-            <div class="copyright">
-                <div class="container">
-                    <p>© 2019 All Rights Reserved. Design by<a href="https://html.design/"> Free Html
-                            Templates</a></p>
-                </div>
-            </div>
         </div>
     </footer>
     <!-- end footer -->
@@ -95,6 +96,7 @@
 </div>
 <div class="overlay"></div>
 <!-- Javascript files-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min" ></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>

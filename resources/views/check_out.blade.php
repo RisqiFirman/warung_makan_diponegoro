@@ -1,6 +1,8 @@
 @extends('layout.v_template')
 @section('content')
-
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body">
 <div class="container" style="margin-top: 150px">
     <span>  <i aria-hidden="true" style="font-size:x-large ; color:  rgb(63, 61, 61);" >Nama : M. Risqi Firmansyah</i>
    <br>
@@ -9,32 +11,27 @@
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr>
+
 			<th>No</th>
-			<th>Pesanan</th>
+            <th>Pesanan</th>
+            <th>jumlah</th>
 			<th>Harga</th>
             <th>Banyak</th>
             <th>Total </th>
 		</tr>
 	</thead>
 	<tbody>
+        <?php $no =1; ?>
+        @foreach ($pesanan_detail as $data)
+        <tr>
+            <td>{{$no++}}</td>
+            <td>{{$data->nama_menu}}</td>
+        @endforeach
 		<tr>
-			<td>1</td>
-			<td>Mie Ayam</td>
-			<td>Rp. 6.000</td>
-            <td>3</td>
-            <td>Rp. 18.000</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Es Teh</td>
-			<td>Rp. 3000</td>
-            <td>3</td>
-            <td>Rp. 9.000</td>
-        </tr>
-        <caption>
-            <h3 style="float: right; margin-right:170px">Total              : Rp. 27.000</h3>
-        </caption>
 	</tbody>
 </table>
+</div>
+</div>
+</div>
 
 @endsection

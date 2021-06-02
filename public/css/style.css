@@ -943,3 +943,10 @@ background-color: white;
      color: #fff;
      font-weight: 500;
 }
+.jumb {
+    margin-top: 10%;
+    color: white ;
+}
+.jumb .h1 {
+    font-size: 300%;
+}
